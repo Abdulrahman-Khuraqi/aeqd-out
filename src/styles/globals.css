@@ -1,0 +1,221 @@
+:root {
+  --bs-primary-rgb: #3777bb;
+  --primary-color: #3777bb;
+  --color-primary: #3777bb;
+  --color-primary-900: #17324f;
+  --color-primary-300: #79a4d1;
+  --color-secondary-200: #9dd9f2;
+  --color-primary-dark: #17324f;
+  --color-primary-bg: #2b354d;
+  --secondary-color: #121212;
+  --color-dark: #121212;
+  --primary-background: #eef1f6;
+  --color-background: #eef1f6;
+  --font-ar: "Readex Pro", sans-serif;
+  --font-body: "Readex Pro", sans-serif;
+  --font-hero: "Readex Pro", sans-serif;
+  --font-p: Readex Pro, sans-serif;
+  --font-size-22: 22px;
+  --padding-form-container: 100px;
+  --padding-top-section: 100px;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap'); */
+/* 
+@font-face {
+  font-family: 'Readex Pro';
+  src: url('/fonts/Noor-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noor';
+  src: url('/fonts/Noor-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noor';
+  src: url('/fonts/Noor-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+} */
+
+/* Global font family assignment */
+body {
+  font-family: "Readex Pro", sans-serif;
+  margin: 0.5rem;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-family: var(--font-body);
+}
+
+:root {
+  /* fonts */
+  --font-open-sans: "Readex Pro";
+  --font-tajawal: Readex Pro;
+  --font-poppins-regular: Poppins-Regular;
+  --font-poppins-bold: "Poppins", sans-serif;
+
+  /* font sizes */
+  --font-size-mini: 15px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-24xl: 43px;
+  --fs-section-title: 43px;
+  --fs-title-blog: 36px;
+  --font-size-49xl: 68px;
+  --font-size-41xl: 60px;
+  --fs-18: 18px;
+  --fs-p: 18px;
+  --fs-16: 16px;
+  /* line height */
+  --lh-bigtxt: 84px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-primary: #3777bb;
+  --color-secondary: #23262f;
+  /* border radiuses */
+  --br-mid: 17px;
+  --br-18xl: 37px;
+  --br-sm: 14px;
+  --br-20xl: 39px;
+  --br-smi: 13px;
+  --br-5xl: 24px;
+  --p-container: 100px 100px;
+  --p-container-light: 20px 100px;
+  --br-container: 40px;
+  --br-button: 100px;
+  --fz-content-title: 3.25rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-49xl: 45px;
+    --fs-section-title: 28px;
+    --fs-title-blog: 24px;
+    --lh-bigtxt: 60px;
+    --fs-p: 16px;
+    --fs-18: 16px;
+    --padding-form-container: 50px 10px 50px 10px;
+    --font-size-22: 18px;
+    --p-container: 80px 20px;
+    --p-container-light: 20px 10px;
+    --padding-top-section: 60px;
+    --font-size-hero: 44px;
+    --font-size-title: 36px;
+    --fz-section-title: 2.75rem;
+    --fz-content-title: 2.25rem;
+    --font-size-md: 18px;
+    --font-size-xxl: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-size-hero: 36px;
+    --fz-section-title: 2.25rem;
+    --fz-content-title: 1.75rem;
+    --margin-section: 30px;
+  }
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: start;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: start;
+}
+.container {
+  padding-right: 28px;
+  padding-left: 28px;
+}
+@media screen and (max-width: 567px) {
+  .container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[lang="en"] {
+  --font-body: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
+
+  /* الخط للغة الإنجليزية */
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  /* الخط للغة الإنجليزية */
+}
+
+[lang="ar"] {
+  font-family: "Readex Pro", sans-serif;
+  /* الخط للغة العربية */
+}
+
+html[dir="ltr"] {
+  --font-body: "Montserrat", sans-serif;
+  --font-hero: "Montserrat", sans-serif;
+
+  font-family: "Montserrat", sans-serif;
+
+  /* الخط للغة الإنجليزية */
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+html[dir="rtl"] {
+  font-family: "Readex Pro", sans-serif;
+  /* الخط للغة العربية */
+}
+
+body {
+  background-color: #eef1f6;
+}
+/* dark mode */
+/* body,p,h1,h2,h3,h4,h5,h6{
+  color:white;
+} */
+
+@media (min-width: 1536px) {
+  .container {
+    /* max-width: 1280px; */
+  }
+}
+
+body {
+  font-family: "Readex Pro", sans-serif;
+}
+
+html:has(dialog[open]) {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+svg {
+  transition: transform 0.3s ease;
+}
+
+html[dir="ltr"] .r svg {
+  transform: rotate(180deg);
+}
+
+html[dir="ltr"] .x svg {
+  transform: rotate(0);
+}

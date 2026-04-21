@@ -1,0 +1,59 @@
+/* Start buttons  */
+
+.button__radio {
+  color: #203a4b;
+}
+
+.button__radio .active {
+  background: #03e7b4;
+}
+
+.button__gray {
+  color: hsl(0, 0%, 50%) !important;
+  border-color: hsl(0, 0%, 80%) !important;
+  padding: 4px 0 !important;
+  font-size: 1.2em !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: white !important;
+}
+
+.btn-outline-primary {
+}
+
+/* select */
+.css-1s2u09g-control {
+  border-radius: 100px !important;
+}
+
+.css-1pahdxg-control {
+  border-radius: 100px !important;
+  border-color: #03e7b4 !important;
+}
+
+.contract__content {
+  width: 460px;
+}
+
+@media (max-width: 570px) {
+  .contract__content {
+    width: 90vw;
+  }
+}
+
+.form-control,
+.rmdp-container {
+  border-radius: 100px !important;
+}
+
+.spinner-border-sm span {
+  visibility: hidden;
+}
+
+.spinner-border-sm {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}

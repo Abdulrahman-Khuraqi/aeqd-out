@@ -1,0 +1,63 @@
+[
+    {
+      "id": 0,
+      "imageSrc": "/images/techRDP/techRDP-1.webp",
+      "width": "730",
+      "height": "730"
+    },
+    {
+      "id": 1,
+      "imageSrc": "/images/techRDP/techRDP-2.webp",
+      "width": "730",
+      "height": "730"
+    },
+    {
+      "id": 2,
+      "imageSrc": "/images/techRDP/techRDP-3.webp",
+      "width": "730",
+      "height": "730"
+    },
+    {
+      "id": 3,
+      "imageSrc": "/images/techRDP/techRDP-4.webp",
+      "width": "730",
+      "height": "730"
+    },
+    {
+      "id": 4,
+      "imageSrc": "/images/techRDP/techRDP-5.webp",
+      "width": "730",
+      "height": "730"
+    },     {
+        "id": 5,
+        "imageSrc": "/images/techRDP/techRDP-6.webp",
+        "width": "730",
+        "height": "730"
+      },     {
+        "id": 6,
+        "imageSrc": "/images/techRDP/techRDP-7.webp",
+        "width": "730",
+        "height": "730"
+      },     {
+        "id": 7,
+        "imageSrc": "/images/techRDP/techRDP-8.webp",
+        "width": "730",
+        "height": "730"
+      },     {
+        "id": 8,
+        "imageSrc": "/images/techRDP/techRDP-9.webp",
+        "width": "730",
+        "height": "730"
+      },     {
+        "id": 9,
+        "imageSrc": "/images/techRDP/techRDP-10.webp",
+        "width": "730",
+        "height": "730"
+      },     {
+        "id": 10,
+        "imageSrc": "/images/techRDP/techRDP-11.webp",
+        "width": "730",
+        "height": "730"
+      }
+  ]
+  

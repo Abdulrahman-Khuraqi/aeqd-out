@@ -1,0 +1,51 @@
+{
+  "buttonTextAr": "تواصل معنا",
+  "buttonTextEn": "Contact us",
+  "logo": "/images/logo/logo.webp",
+  "logoWidth": "93",
+  "logoHeight": "45",
+  "linksAr": [
+    {
+      "title": "خدماتنا",
+      "to": "/#services",
+      "offset": -100,
+      "badge": ""
+    },
+    {
+      "title": "خطوات العمل",
+      "to": "/#steps"
+    },
+    {
+      "title": "وثق عقدك",
+      "to": "/#Certify",
+      "offset": -100,
+      "badge": ""
+    },
+    {
+      "title": "مقالات",
+      "to": "/articles"
+    }
+  ],
+  "linksEn": [
+    {
+      "title": "Services",
+      "to": "#services",
+      "offset": -100,
+      "badge": ""
+    },
+    {
+      "title": "Process",
+      "to": "#steps"
+    },
+    {
+      "title": "Certify",
+      "to": "#Certify",
+      "offset": -100,
+      "badge": ""
+    },
+    {
+      "title": "Articles",
+      "to": "/en/articles"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+    "html-css-class-completion.enableEmmetSupport": true,
+    "cSpell.words": [
+        "الأهداف",
+        "الرؤية"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#44251C",
+        "titleBar.activeBackground": "#603427",
+        "titleBar.activeForeground": "#FCF9F8",
+        "titleBar.inactiveBackground": "#44251C",
+        "titleBar.inactiveForeground": "#FCF9F8"
+    }
+}

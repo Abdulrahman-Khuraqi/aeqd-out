@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "imageSrc": "/images/clients/client-1.webp",
+    "width": "270",
+    "height": "160"
+  },
+  {
+    "id": 1,
+    "imageSrc": "/images/clients/client-2.webp",
+    "width": "397",
+    "height": "155"
+  },
+  {
+    "id": 2,
+    "imageSrc": "/images/clients/client-3.webp",
+    "width": "304",
+    "height": "235"
+  },
+  {
+    "id": 3,
+    "imageSrc": "/images/clients/client-4.webp",
+    "width": "225",
+    "height": "267"
+  },
+  {
+    "id": 0,
+    "imageSrc": "/images/clients/client-1.webp",
+    "width": "270",
+    "height": "160"
+  },
+  {
+    "id": 1,
+    "imageSrc": "/images/clients/client-2.webp",
+    "width": "397",
+    "height": "155"
+  },
+  {
+    "id": 2,
+    "imageSrc": "/images/clients/client-3.webp",
+    "width": "304",
+    "height": "235"
+  },
+  {
+    "id": 3,
+    "imageSrc": "/images/clients/client-4.webp",
+    "width": "225",
+    "height": "267"
+  },
+  {
+    "id": 0,
+    "imageSrc": "/images/clients/client-1.webp",
+    "width": "270",
+    "height": "160"
+  },
+  {
+    "id": 1,
+    "imageSrc": "/images/clients/client-2.webp",
+    "width": "397",
+    "height": "155"
+  },
+  {
+    "id": 2,
+    "imageSrc": "/images/clients/client-3.webp",
+    "width": "304",
+    "height": "235"
+  },
+  {
+    "id": 3,
+    "imageSrc": "/images/clients/client-4.webp",
+    "width": "225",
+    "height": "267"
+  }
+]
