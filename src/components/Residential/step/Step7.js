@@ -40,11 +40,25 @@ const Step7 = ({ info, setInfo, contractImage, goToStep, isDevMode }) => {
   const notifyError = () => toast.error("خطأ في ارسال الطلب");
   const notifyErrorImage = () => toast.error("خطأ في ارسال الصورة");
 
+  const buildEmailPayload = () => {
+    const payload = {};
+    Object.entries(info).forEach(([key, value]) => {
+      if (value instanceof File || value instanceof Blob) return;
+      if (typeof value === "boolean") {
+        payload[key] = value ? "نعم" : "لا";
+        return;
+      }
+      payload[key] = value === undefined || value === null ? "" : value;
+    });
+    return payload;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setOrderCheck(true);
 
-    emailjs.send(serviceID, templateID, info, PublicKey).then(
+    const payload = buildEmailPayload();
+    emailjs.send(serviceID, templateID, payload, PublicKey).then(
       async () => {
         toggle();
         notify();
@@ -63,33 +77,56 @@ const Step7 = ({ info, setInfo, contractImage, goToStep, isDevMode }) => {
       },
     );
   };
-  const handleContracturl = () => {
-    if (contractImage !== "")
-      fetch(CLOUDINARY_URL, {
-        mode: "cors",
-        method: "POST",
-        body: contractImage,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.secure_url !== "") {
-            setInfo((previousState) => ({
-              ...previousState,
-              contracturl: data.secure_url,
-            }));
-          }
-          toggle();
-        })
-        .catch((err) => {
-          console.error(err);
-          toggle();
-          notifyErrorImage();
-        });
-    else toggle();
-  };
-  const gotoFinal = async () => {
-    if (isDevMode) setModal(true);
 
+  const uploadToCloudinary = async (fileOrFormData) => {
+    let body = fileOrFormData;
+    if (fileOrFormData instanceof File || fileOrFormData instanceof Blob) {
+      body = new FormData();
+      body.append("file", fileOrFormData);
+      body.append("upload_preset", "oidj6ike");
+      body.append("api_key", "437254763994818");
+    }
+    const response = await fetch(CLOUDINARY_URL, {
+      mode: "cors",
+      method: "POST",
+      body,
+    });
+    const data = await response.json();
+    return data?.secure_url || "";
+  };
+
+  const handleContracturl = async () => {
+    try {
+      if (contractImage !== "") {
+        const url = await uploadToCloudinary(contractImage);
+        if (url) {
+          setInfo((previousState) => ({
+            ...previousState,
+            contracturl: url,
+          }));
+        }
+      }
+
+      if (info.deedImage instanceof File || info.deedImage instanceof Blob) {
+        const deedUrl = await uploadToCloudinary(info.deedImage);
+        if (deedUrl) {
+          setInfo((previousState) => ({
+            ...previousState,
+            deedImageUrl: deedUrl,
+            deedImage: deedUrl,
+          }));
+        }
+      }
+
+      toggle();
+    } catch (err) {
+      console.error(err);
+      toggle();
+      notifyErrorImage();
+    }
+  };
+
+  const gotoFinal = async () => {
     setSpinnerCheck(true);
     if (info.area === "") {
       setAreaChecked(false);
@@ -106,6 +143,12 @@ const Step7 = ({ info, setInfo, contractImage, goToStep, isDevMode }) => {
     if (info.extraNo === "" || !(info.extraNo.length === 4))
       setExtraNoChecked(false);
     else setExtraNoChecked(true);
+
+    if (isDevMode) {
+      await handleContracturl();
+      return;
+    }
+
     if (
       info.extraNo !== "" &&
       info.extraNo.length === 4 &&

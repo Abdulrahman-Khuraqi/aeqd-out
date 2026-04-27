@@ -93,9 +93,6 @@ const Step6 = ({
   const toggle = () => setModal(!modal);
 
   const gotoSeven = () => {
-    if(isDevMode) nextStep();
-
-
     if (info.rentAmount === "") {
       setLessorNameChecked(false);
     } else setLessorNameChecked(true);
@@ -124,6 +121,11 @@ const Step6 = ({
     if (info.electricity === "") setElectricityChecked(true);
     else setElectricityChecked(true);
 
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
+
     if (
       info.rentAmount !== "" &&
       info.paymentMethod !== "" &&
@@ -149,7 +151,7 @@ const Step6 = ({
   useEffect(() => {
     if (currentStep === 6) setNewContract(true);
     else setNewContract(false);
-  });
+  }, [currentStep, setNewContract]);
 
   return (
     <div>

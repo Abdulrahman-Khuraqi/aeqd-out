@@ -155,8 +155,6 @@ const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
   };
 
   const gotoSix = () => {
-    if (isDevMode) nextStep(true);
-
     const dateOk = info.propertyContractDate !== "";
     setPropertyContractDateChecked(dateOk);
 
@@ -176,6 +174,11 @@ const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
 
     const legalTypeOk = isOtherDeed ? !!info.legalDocumentType : true;
     setLegalDocumentTypeChecked(legalTypeOk);
+
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
 
     if (
       dateOk &&
@@ -368,6 +371,47 @@ const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
                     </FormText>
                   )}
                 </FormGroup>
+
+                <Row>
+                  <Col xs={12} md={6}>
+                    <FormGroup>
+                      <Label>عدد أدوار المبنى</Label>
+                      <Input
+                        type="number"
+                        min="0"
+                        placeholder="عدد أدوار المبنى"
+                        id="buildingFloorsNo"
+                        name="buildingFloorsNo"
+                        value={info.buildingFloorsNo || ""}
+                        onChange={(e) =>
+                          setInfo((previousState) => ({
+                            ...previousState,
+                            buildingFloorsNo: e.target.value,
+                          }))
+                        }
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <FormGroup>
+                      <Label>عدد الوحدات في كل طابق</Label>
+                      <Input
+                        type="number"
+                        min="0"
+                        placeholder="عدد الوحدات في كل طابق"
+                        id="unitsPerFloor"
+                        name="unitsPerFloor"
+                        value={info.unitsPerFloor || ""}
+                        onChange={(e) =>
+                          setInfo((previousState) => ({
+                            ...previousState,
+                            unitsPerFloor: e.target.value,
+                          }))
+                        }
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
 
                 {needsDeedImage && (
                   <FormGroup className="mt-3">

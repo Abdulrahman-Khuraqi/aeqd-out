@@ -41,8 +41,22 @@ const Step5 = ({
   const [deedTypeNameChecked, setDeedTypeNameChecked] = useState(true);
   const [recordNumberChecked, setRecordNumberChecked] = useState(true);
   const [registrationDateChecked, setRegistrationDateChecked] = useState(true);
+  const [propertyTypeChecked, setPropertyTypeChecked] = useState(true);
   const [spinnerCheck, setSpinnerCheck] = useState(false);
   const [isDeedDragActive, setIsDeedDragActive] = useState(false);
+
+  const propertyTypeOptions = [
+    { value: "مكتب", label: "مكتب" },
+    { value: "محل تجاري", label: "محل تجاري" },
+    { value: "معرض", label: "معرض" },
+    { value: "مستودع", label: "مستودع" },
+    { value: "مصنع", label: "مصنع" },
+    { value: "مجمع تجاري مفتوح بلازا", label: "مجمع تجاري مفتوح بلازا" },
+    { value: "مجمع تجاري مغلق مول", label: "مجمع تجاري مغلق مول" },
+    { value: "برج", label: "برج" },
+    { value: "أرض", label: "أرض" },
+    { value: "أخرى", label: "أخرى" },
+  ];
 
   const deedImageInputId = useId();
   const deedImageInputRef = useRef(null);
@@ -179,6 +193,11 @@ const Step5 = ({
     } else {
       deedValid = false;
     }
+
+    if (!info.propertyType) {
+      setPropertyTypeChecked(false);
+      deedValid = false;
+    } else setPropertyTypeChecked(true);
 
     if (!deedValid) return;
 
@@ -558,6 +577,68 @@ const Step5 = ({
                   </FormGroup>
                 </div>
               )}
+            </div>
+
+            {/* === بيانات العقار === */}
+            <div className="mb-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+              <div className="mb-3 border-r-4 border-primary-500 pr-3">
+                <span className="text-sm font-semibold text-gray-600">بيانات العقار</span>
+              </div>
+
+              <FormGroup className="mb-3">
+                <label className="mb-1 block text-sm font-medium text-gray-600">
+                  حدد نوع العقار <span className="text-red-400">*</span>
+                </label>
+                <Select
+                  placeholder="حدد نوع العقار"
+                  options={propertyTypeOptions}
+                  value={
+                    info.propertyType
+                      ? { value: info.propertyType, label: info.propertyType }
+                      : null
+                  }
+                  onChange={(e) =>
+                    setInfo((prev) => ({ ...prev, propertyType: e.value }))
+                  }
+                />
+                {!propertyTypeChecked && (
+                  <FormText className="text-red-500">الرجاء اختيار نوع العقار</FormText>
+                )}
+              </FormGroup>
+
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                <FormGroup className="mb-0">
+                  <label className="mb-1 block text-sm font-medium text-gray-600">
+                    عدد أدوار المبنى
+                  </label>
+                  <Input
+                    type="number"
+                    min="0"
+                    placeholder="عدد أدوار المبنى"
+                    id="buildingFloorsNo"
+                    value={info.buildingFloorsNo || ""}
+                    onChange={(e) =>
+                      setInfo((prev) => ({ ...prev, buildingFloorsNo: e.target.value }))
+                    }
+                  />
+                </FormGroup>
+
+                <FormGroup className="mb-0">
+                  <label className="mb-1 block text-sm font-medium text-gray-600">
+                    عدد الوحدات في كل طابق
+                  </label>
+                  <Input
+                    type="number"
+                    min="0"
+                    placeholder="عدد الوحدات في كل طابق"
+                    id="unitsPerFloor"
+                    value={info.unitsPerFloor || ""}
+                    onChange={(e) =>
+                      setInfo((prev) => ({ ...prev, unitsPerFloor: e.target.value }))
+                    }
+                  />
+                </FormGroup>
+              </div>
             </div>
 
           </Form>

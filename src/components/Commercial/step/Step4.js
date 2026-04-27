@@ -44,8 +44,6 @@ const Step4 = ({
   };
 
   const gotoFive = () => {
-    if(isDevMode) nextStep();
-
     if (commercialImage === "") {
       setCommercialImageChecked(false);
     } else {
@@ -89,6 +87,11 @@ const Step4 = ({
       setLesseeBirthdayChecked(false);
     } else {
       setLesseeBirthdayChecked(true);
+    }
+
+    if (isDevMode) {
+      nextStep();
+      return;
     }
 
     if (

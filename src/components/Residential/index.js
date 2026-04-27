@@ -70,6 +70,7 @@ const Residential = () => {
         propertyType: '',
         propertyUse: '',
         buildingFloorsNo: '',
+        unitsPerFloor: '',
         rentAmount: '',
         paymentMethod: '',
         startingDate: '',

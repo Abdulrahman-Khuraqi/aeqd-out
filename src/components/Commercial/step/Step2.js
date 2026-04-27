@@ -18,8 +18,6 @@ const Step2 = ({ info, setInfo, previousStep, nextStep, isDevMode }) => {
   const [lessorChecked, setLessorChecked] = useState(true);
 
   const gotoThree = async () => {
-    if (isDevMode) nextStep();
-
     let valid = true;
 
     if (info.propertyContract === '') {
@@ -31,6 +29,11 @@ const Step2 = ({ info, setInfo, previousStep, nextStep, isDevMode }) => {
       setLessorChecked(false);
       valid = false;
     } else setLessorChecked(true);
+
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
 
     if (valid) nextStep();
   };

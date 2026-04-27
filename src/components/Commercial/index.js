@@ -65,6 +65,7 @@ const Contract = () => {
         propertyType: '',
         propertyUse: '',
         buildingFloorsNo: '',
+        unitsPerFloor: '',
         rentAmount: '',
         paymentMethod: '',
         startingDate: '',

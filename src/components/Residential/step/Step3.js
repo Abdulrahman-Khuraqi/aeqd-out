@@ -17,8 +17,6 @@ const Step3 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
   const [lessorIbanChecked, setLessorIbanChecked] = useState(true);
 
   const goToFour = () => {
-    if (isDevMode) nextStep();
-
     if (
       info.lessorName === "" ||
       !/^[\u0621-\u064A\s]+$/.test(info.lessorName)
@@ -48,6 +46,11 @@ const Step3 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
     ) {
       setLessorIbanChecked(false);
     } else setLessorIbanChecked(true);
+
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
 
     if (
       info.lessorName !== "" &&

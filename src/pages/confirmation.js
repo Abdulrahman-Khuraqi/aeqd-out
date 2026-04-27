@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Confirmation() {
   return (
@@ -27,23 +27,13 @@ export default function Confirmation() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mb-8 text-center text-lg leading-relaxed text-gray-600">
+          <p className="mb-8 text-center text-xl font-medium leading-loose text-gray-600">
             سيتم إرسال طلب تأكيد بيانات العقار إليك عبر منصة إيجار
             <br />
             نرجو قبول الطلب في أقرب وقت
+            <br />
+            بعد قبول الطلب سيتم إرسال مسودة العقد إليكم عبر الواتساب
           </p>
-
-          {/* Warning */}
-          <div className="mb-8 flex items-start gap-3 rounded-xl border border-yellow-300 bg-yellow-50 px-5 py-4">
-            <ExclamationTriangleIcon className="mt-0.5 h-6 w-6 shrink-0 text-yellow-500" />
-            <p className="text-base font-semibold leading-relaxed text-gray-700">
-              تنبيه: الطلب صالح لمدة{" "}
-              <span className="text-red-600 underline decoration-dotted">
-                7 أيام فقط
-              </span>{" "}
-              من تاريخ الإرسال — يرجى القبول قبل انتهاء المدة
-            </p>
-          </div>
 
           {/* Video section */}
           <div className="mb-8">

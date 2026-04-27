@@ -20,9 +20,6 @@ const Step2 = ({ info, setInfo, previousStep, nextStep, isDevMode }) => {
   const [lessorOrlesseeChecked, setLessorOrlesseeChecked] = useState(true);
 
   const gotoThree = () => {
-    // Check if required fields are filled
-    if (isDevMode) nextStep();
-
     if (info.propertyContract === "") {
       setPropertyContractChecked(false);
     } else {
@@ -39,6 +36,11 @@ const Step2 = ({ info, setInfo, previousStep, nextStep, isDevMode }) => {
       setLessorChecked(false);
     } else {
       setLessorChecked(true);
+    }
+
+    if (isDevMode) {
+      nextStep();
+      return;
     }
 
     if (

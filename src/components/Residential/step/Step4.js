@@ -15,7 +15,6 @@ const Step4 = ({ info, setInfo, nextStep, previousStep, isDevMode }) => {
   const [lesseeBirthdayChecked, setLesseeBirthdayChecked] = useState(true);
 
   const gotoFive = () => {
-    if (isDevMode) nextStep();
     if (
       info.lesseeName === "" ||
       !/^[\u0621-\u064A\s]+$/.test(info.lesseeName)
@@ -37,6 +36,11 @@ const Step4 = ({ info, setInfo, nextStep, previousStep, isDevMode }) => {
     if (info.lesseeBirthday === "") {
       setLesseeBirthdayChecked(false);
     } else setLesseeBirthdayChecked(true);
+
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
 
     if (
       info.lesseeName !== "" &&

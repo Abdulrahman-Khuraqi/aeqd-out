@@ -76,19 +76,22 @@ const Residential = () => {
       html[0].dir = "";
       html[0].style.background = "#2b354d";
     };
-  });
+  }, [lang]);
   // eslint-disable-next-line no-unused-vars
   const [stepWizard, setStepWizard] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = STEP_LABELS.length;
   const [lessor, setLessor] = useState("");
   const [contractImage, setContractImage] = useState("");
-  const [isDevMode, setDevMode] = useState(true);
+  const [isDevMode, setDevMode] = useState(false);
 
   const [info, setInfo] = useState({
     lessorOrlessee: "",
     lessor: "",
     propertyContract: "",
+    recordNumber: "",
+    registrationDate: "",
+    legalDocumentType: "",
     lessorName: "",
     lessorIdNumber: "",
     lessorPhone: "",
@@ -103,6 +106,9 @@ const Residential = () => {
     propertyType: "",
     propertyUse: "",
     buildingFloorsNo: "",
+    unitsPerFloor: "",
+    deedImage: "",
+    deedImageUrl: "",
     rentAmount: "",
     paymentMethod: "",
     startingDate: "",
@@ -118,13 +124,15 @@ const Residential = () => {
     waterNo: "",
     electricity: "",
     electricityNo: "",
+    area: "",
     city: "",
+    district: "",
+    street: "",
     buildingNo: "",
     postalCode: "",
     extraNo: "",
     contracturl: "",
     brokerAssistantId: "",
-    area: "",
     // Unit details (required)
     unitUse: "",
 
@@ -156,8 +164,10 @@ const Residential = () => {
     kitchenCabinetsInstalled: false,
     additionalServices: "",
     electricityMeter: false,
+    electricityMeterNumber: "",
     gasMeterNumber: "",
     waterMeter: false,
+    waterMeterNumber: "",
     parkingSpotsCount: "",
   });
   const assignStepWizard = (instance) => {

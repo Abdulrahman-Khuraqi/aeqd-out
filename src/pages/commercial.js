@@ -74,7 +74,7 @@ const Contract = () => {
       html[0].lang = "en";
       html[0].dir = "";
     };
-  });
+  }, [lang]);
   // eslint-disable-next-line no-unused-vars
   const [stepWizard, setStepWizard] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
@@ -82,7 +82,7 @@ const Contract = () => {
   const [lessor, setLessor] = useState("");
   const [contractImage, setContractImage] = useState("");
   const [commercialImage, setCommerialImage] = useState("");
-  const [isDevMode, setDevMode] = useState(true);
+  const [isDevMode, setDevMode] = useState(false);
 
   const [info, setInfo] = useState({
     lessorOrlessee: "",
@@ -102,11 +102,15 @@ const Contract = () => {
     propertyType: "",
     propertyUse: "",
     buildingFloorsNo: "",
+    unitsPerFloor: "",
+    deedImage: "",
+    deedImageUrl: "",
     rentAmount: "",
     paymentMethod: "",
     startingDate: "",
     contractDuration: "",
     unitType: "",
+    unitUse: "",
     FloorNo: "",
     apartmentNo: "",
     roomNo: "",
@@ -114,7 +118,10 @@ const Contract = () => {
     dailyFine: "",
     water: "",
     electricity: "",
+    area: "",
     city: "",
+    district: "",
+    street: "",
     buildingNo: "",
     postalCode: "",
     extraNo: "",
@@ -122,14 +129,43 @@ const Contract = () => {
     commercialRegistrationNo: "",
     commercialurl: "",
     brokerAssistantId: "",
-    area: "",
-    street: "",
-    district: "",
     deedIssueDate: "",
     deedDocumentNumber: "",
     deedTypeName: "",
     recordNumber: "",
     registrationDate: "",
+
+    // Unit details (advanced / optional)
+    unitCreationDate: "",
+    unitDirection: "",
+    unitFinishing: "",
+    frontFacadeLength: "",
+    unitLength: "",
+    unitWidth: "",
+    unitHeight: "",
+    hasMezzanine: false,
+    isFurnished: false,
+
+    // Unit facilities (advanced / optional)
+    hasUnitFacilities: "",
+    bedroomsCount: "",
+    bathroomsCount: "",
+    hallsCount: "",
+    kitchensCount: "",
+    parkingSpotsCount: "",
+    gasMeterNumber: "",
+    maidRoom: false,
+    storageRoom: false,
+    majlis: false,
+    backyard: false,
+    centralAC: false,
+    splitAC: false,
+    desertAC: false,
+    windowAC: false,
+    electricityMeter: false,
+    electricityMeterNumber: "",
+    waterMeter: false,
+    waterMeterNumber: "",
   });
   const assignStepWizard = (instance) => {
     setStepWizard(instance);

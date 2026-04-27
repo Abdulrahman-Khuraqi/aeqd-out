@@ -94,8 +94,6 @@ const Step6 = ({
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const gotoSeven = () => {
-    if (isDevMode) nextStep();
-
     const unitTypeOk = info.unitType !== "";
     setUnitTypeCheacked(unitTypeOk);
 
@@ -124,6 +122,11 @@ const Step6 = ({
     if (info.contractDuration === "") setContractDurationCheacked(false);
     else setContractDurationCheacked(true);
 
+    if (isDevMode) {
+      nextStep();
+      return;
+    }
+
     if (
       unitTypeOk &&
       unitUseOk &&
@@ -141,7 +144,7 @@ const Step6 = ({
   useEffect(() => {
     if (currentStep === 6) setNewContract(true);
     else setNewContract(false);
-  });
+  }, [currentStep, setNewContract]);
   const handleDuration = (e) => {
     console.log(e.value);
     setInfo((previousState) => ({
