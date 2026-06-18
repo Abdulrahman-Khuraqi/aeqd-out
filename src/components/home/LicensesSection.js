@@ -12,14 +12,14 @@ const LicensesSection = () => {
       altKey: "license1Alt",
       description: "1116623371",
       width: 184,
-      pdf: "/pdf/ejar.pdf",
+      pdf: "/pdf/ejar-1.pdf",
     },
     {
       image: "/images/logo/rega.webp",
       altKey: "license2Alt",
       description: "1116623371",
       width: 300,
-      pdf: "/pdf/rega.pdf",
+      pdf: "/pdf/rega-1.pdf",
     },
     {
       image: "/images/logo/sbc.webp",

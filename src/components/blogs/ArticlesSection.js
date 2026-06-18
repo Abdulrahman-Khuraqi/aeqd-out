@@ -45,6 +45,7 @@ const ArticlesSection = ({ blogs }) => {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
+                    calendar: "gregory",
                   },
                 )
               : null;

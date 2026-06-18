@@ -134,7 +134,7 @@ function Footer({ className }) {
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href={"/pdf/ejar.pdf"}
+                      href={"/pdf/ejar-1.pdf"}
                       alt="شهادة عضوية إيجار"
                     >
                       {t("footerEjarCertificate")}

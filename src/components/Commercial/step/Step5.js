@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
+// import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid"; // deed verification modal
 
 import arabic from "react-date-object/calendars/arabic";
 import arabicAr from "react-date-object/locales/arabic_ar";
@@ -17,8 +16,9 @@ import {
   Label,
 } from "reactstrap";
 
-const API_KEY = "03pTDFns1QKYULtHvyL9j86KHWracTXK";
-const API_URL = "https://api.wathq.sa/moj/real-estate/deed/";
+// Wathq deed verification — temporarily disabled (re-enable when API is ready)
+// const API_KEY = "03pTDFns1QKYULtHvyL9j86KHWracTXK";
+// const API_URL = "https://api.wathq.sa/moj/real-estate/deed/";
 
 const DEED_TYPES_WITH_DOCS = ["صك ملكية ورقي", "حجة استحكام", "أخرى"];
 
@@ -31,8 +31,8 @@ const Step5 = ({
   contractImage,
   setContractImage,
 }) => {
-  const [data, setData] = useState(null);
-  const [modal, setModal] = useState(false);
+  // const [data, setData] = useState(null); // deed verification modal
+  // const [modal, setModal] = useState(false); // deed verification modal
   const [propertyContractIdChecked, setPropertyContractChecked] = useState(true);
   const [propertyContractDateChecked, setPropertyContractDateChecked] = useState(true);
   const [deedIssueDateChecked, setDeedIssueDateChecked] = useState(true);
@@ -42,7 +42,7 @@ const Step5 = ({
   const [recordNumberChecked, setRecordNumberChecked] = useState(true);
   const [registrationDateChecked, setRegistrationDateChecked] = useState(true);
   const [propertyTypeChecked, setPropertyTypeChecked] = useState(true);
-  const [spinnerCheck, setSpinnerCheck] = useState(false);
+  // const [spinnerCheck, setSpinnerCheck] = useState(false); // deed verification
   const [isDeedDragActive, setIsDeedDragActive] = useState(false);
 
   const propertyTypeOptions = [
@@ -61,7 +61,18 @@ const Step5 = ({
   const deedImageInputId = useId();
   const deedImageInputRef = useRef(null);
 
-  const toggle = () => setModal(!modal);
+  // const toggle = () => setModal(!modal); // deed verification modal
+
+  // const next = () => {
+  //   setSpinnerCheck(false);
+  //   toggle();
+  //   nextStep();
+  // };
+
+  // const cancel = () => {
+  //   toggle();
+  //   setSpinnerCheck(false);
+  // };
 
   const deedType = info.propertyContract;
   const isElectronic = deedType === "صك إلكتروني";
@@ -109,33 +120,23 @@ const Step5 = ({
     }));
   };
 
-  const next = () => {
-    setSpinnerCheck(false);
-    toggle();
-    nextStep();
-  };
-
-  const cancel = () => {
-    toggle();
-    setSpinnerCheck(false);
-  };
-
-  const deedStatus = async () => {
-    try {
-      setData("");
-      setSpinnerCheck(true);
-      const response = await axios.get(
-        `${API_URL}${info.propertyContractId}/${info.lessorIdNumber}/National_ID`,
-        { headers: { apikey: API_KEY } },
-      );
-      setData(response.data);
-      toggle();
-    } catch (error) {
-      setData(error?.response?.data?.message || "حدث خطأ");
-      setSpinnerCheck(false);
-      toggle();
-    }
-  };
+  // Wathq deed verification — temporarily disabled (re-enable when API is ready)
+  // const deedStatus = async () => {
+  //   try {
+  //     setData("");
+  //     setSpinnerCheck(true);
+  //     const response = await axios.get(
+  //       `${API_URL}${info.propertyContractId}/${info.lessorIdNumber}/National_ID`,
+  //       { headers: { apikey: API_KEY } },
+  //     );
+  //     setData(response.data);
+  //     toggle();
+  //   } catch (error) {
+  //     setData(error?.response?.data?.message || "حدث خطأ");
+  //     setSpinnerCheck(false);
+  //     toggle();
+  //   }
+  // };
 
   const gotoSix = () => {
     if (isDevMode) {
@@ -201,11 +202,13 @@ const Step5 = ({
 
     if (!deedValid) return;
 
-    if (isElectronic) {
-      deedStatus();
-    } else {
-      nextStep();
-    }
+    // Wathq deed verification — temporarily disabled (re-enable when API is ready)
+    // if (isElectronic) {
+    //   deedStatus();
+    // } else {
+    //   nextStep();
+    // }
+    nextStep();
   };
 
   const deedImageLabel =
@@ -649,9 +652,8 @@ const Step5 = ({
             type="submit"
             className="btn__main btn1 border-0"
             onClick={gotoSix}
-            disabled={spinnerCheck}
           >
-            {spinnerCheck ? <span>جاري التحقق...</span> : "التالي"}
+            التالي
           </button>
           <button
             type="button"
@@ -662,7 +664,7 @@ const Step5 = ({
           </button>
         </div>
 
-        {/* Verification modal (electronic deed only) */}
+        {/* Wathq deed verification modal — temporarily disabled (re-enable when API is ready)
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-black-500 bg-opacity-50 ${modal ? "block" : "hidden"}`}
         >
@@ -697,6 +699,7 @@ const Step5 = ({
             )}
           </div>
         </div>
+        */}
       </div>
     </div>
   );
