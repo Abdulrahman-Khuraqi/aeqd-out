@@ -1,33 +1,16 @@
 /* eslint-disable prettier/prettier */
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 import {
-  Button,
   CardTitle,
-  Col,
   Form,
   FormGroup,
   Input,
-  Modal,
-  ModalBody,
   FormText,
-  ModalFooter,
-  Row,
 } from "reactstrap";
 
-const serviceID = "service_0zlo8cf";
-const PublicKey = "Pk4zYWfH1qiOhTUVu";
-const templateID = "template_ozsaxfl";
-const Step7 = ({
-  info,
-  setInfo,
-  contractImage,
-  commercialImage,
-  goToStep,
-  isDevMode,
-}) => {
+const Step7 = ({ info, setInfo, isDevMode }) => {
   const [cityChecked, setCityChecked] = useState(true);
   const [buildingNoChecked, setBuildingNoChecked] = useState(true);
   const [postalCodeChecked, setPostalCodeChecked] = useState(true);
@@ -37,110 +20,21 @@ const Step7 = ({
   const [spinnerCheck, setSpinnerCheck] = useState(false);
   const [orderCheck, setOrderCheck] = useState(false);
 
-  function timeout(delay) {
-    return new Promise((res) => setTimeout(res, delay));
-  }
-  const CLOUDINARY_URL =
-    "https://api.cloudinary.com/v1_1/linkscenter1/image/upload";
   const toggle = () => setModal(!modal);
   const notify = () => toast.success("تم ارسال الطلب");
-  const notifyError = () => toast.error("خطأ في ارسال الطلب");
-  const notifyErrorImage = () => toast.error("خطأ في ارسال الصورة");
-
-  const buildEmailPayload = () => {
-    const payload = {};
-    Object.entries(info).forEach(([key, value]) => {
-      if (value instanceof File || value instanceof Blob) return;
-      if (typeof value === "boolean") {
-        payload[key] = value ? "نعم" : "لا";
-        return;
-      }
-      payload[key] = value === undefined || value === null ? "" : value;
-    });
-    return payload;
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setOrderCheck(true);
-
-    const payload = buildEmailPayload();
-    emailjs.send(serviceID, templateID, payload, PublicKey).then(
-      async () => {
-        toggle();
-        notify();
-        await timeout(1000);
-        setSpinnerCheck(false);
-        setOrderCheck(false);
-        window.location.href = "/confirmation";
-      },
-      async () => {
-        toggle();
-        notifyError();
-        await timeout(2000);
-        setOrderCheck(false);
-        setSpinnerCheck(false);
-        goToStep(2);
-      },
-    );
-  };
-
-  const uploadToCloudinary = async (fileOrFormData) => {
-    let body = fileOrFormData;
-    if (fileOrFormData instanceof File || fileOrFormData instanceof Blob) {
-      body = new FormData();
-      body.append("file", fileOrFormData);
-      body.append("upload_preset", "oidj6ike");
-      body.append("api_key", "437254763994818");
-    }
-    const response = await fetch(CLOUDINARY_URL, {
-      mode: "cors",
-      method: "POST",
-      body,
-    });
-    const data = await response.json();
-    return data?.secure_url || "";
+    toggle();
+    notify();
+    setOrderCheck(false);
+    setSpinnerCheck(false);
+    window.location.href = "/confirmation";
   };
 
   const handleContracturl = async () => {
-    try {
-      if (contractImage !== "") {
-        const url = await uploadToCloudinary(contractImage);
-        if (url) {
-          setInfo((previousState) => ({
-            ...previousState,
-            contracturl: url,
-          }));
-        }
-      }
-
-      if (commercialImage !== "") {
-        const url = await uploadToCloudinary(commercialImage);
-        if (url) {
-          setInfo((previousState) => ({
-            ...previousState,
-            commercialurl: url,
-          }));
-        }
-      }
-
-      if (info.deedImage instanceof File || info.deedImage instanceof Blob) {
-        const deedUrl = await uploadToCloudinary(info.deedImage);
-        if (deedUrl) {
-          setInfo((previousState) => ({
-            ...previousState,
-            deedImageUrl: deedUrl,
-            deedImage: deedUrl,
-          }));
-        }
-      }
-
-      toggle();
-    } catch (err) {
-      console.error(err);
-      notifyErrorImage();
-      toggle();
-    }
+    toggle();
   };
 
   const gotoFinal = async () => {
@@ -179,6 +73,7 @@ const Step7 = ({
       await handleContracturl();
     else setSpinnerCheck(false);
   };
+
   return (
     <div>
       <div
@@ -361,7 +256,6 @@ const Step7 = ({
         >
           {spinnerCheck ? (
             <div>
-              {/* <Spinner size="sm"></Spinner> */}
               <span> جاري التحقق</span>
             </div>
           ) : (

@@ -44,7 +44,7 @@ Meta.defaultProps = {
   keywords: 'digital marketing, advertising, next.js, seo, tailwindcss',
   ogTitle: '',
   ogDescription: '',
-  ogImage: '/images/cover.jpg', // Update this with a default image path if needed
+  ogImage: '/images/logo/logo.webp',
   url: 'https://itsak.com', // Update with your default website URL
 };
 

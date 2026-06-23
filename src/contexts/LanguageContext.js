@@ -10,9 +10,6 @@ export const LanguageProvider = ({ children }) => {
   const isPathnameEnglish = langFromPath === "en";
   const [isArabic, toggleLanguage] = useToggle(!isPathnameEnglish);
 
-  console.log("Current pathname:", pathname);
-  console.log("Is pathname English:", isPathnameEnglish);
-
   useEffect(() => {
     const html = document.querySelector("html");
     if (isArabic) {
@@ -29,27 +26,12 @@ export const LanguageProvider = ({ children }) => {
     let newPathname = pathname;
     let newAsPath = asPath;
 
-    if (pathname.includes("/post")) {
-      const postId = query.id[0];
-      const data = await import(
-        `../../public/assets/data/posts-${newLocale}.json`
-      );
-      const post = data.posts.find((post) => post.id === parseInt(postId));
-      if (post) {
-        newPathname = `/post/${post.id}/${post.slug}`;
-        if (newLocale === "en") {
-          newPathname = `/en${newPathname}`;
-        }
-        newAsPath = newPathname;
-      }
+    if (newLocale === "en") {
+      newPathname = pathname.startsWith("/en") ? pathname : `/en${pathname}`;
+      newAsPath = asPath.startsWith("/en") ? asPath : `/en${asPath}`;
     } else {
-      if (newLocale === "en") {
-        newPathname = pathname.startsWith("/en") ? pathname : `/en${pathname}`;
-        newAsPath = asPath.startsWith("/en") ? asPath : `/en${asPath}`;
-      } else {
-        newPathname = pathname.replace(/^\/en/, "") || "/";
-        newAsPath = asPath.replace(/^\/en/, "") || "/";
-      }
+      newPathname = pathname.replace(/^\/en/, "") || "/";
+      newAsPath = asPath.replace(/^\/en/, "") || "/";
     }
 
     await push({ pathname: newPathname, query }, newAsPath, {

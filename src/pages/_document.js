@@ -63,7 +63,7 @@ export default function Document() {
             <link
               rel="preload"
               as="image"
-              href="/images/hero-bg-phone.webp"
+              href="/images/hero/hero-bg-phone.webp"
               type="image/webp"
             />
             <link
@@ -78,7 +78,7 @@ export default function Document() {
             <link
               rel="preload"
               as="image"
-              href="/images/hero-bg.webp"
+              href="/images/hero/hero-bg.webp"
               type="image/webp"
             />
             <link

@@ -18,36 +18,8 @@ import WorkSteps from "@/components/home/WorkSteps";
 import Whatsapp from "@/components/home/Whatsapp";
 import LicensesSection from "@/components/home/LicensesSection";
 import { configureAnchors } from "react-scrollable-anchor";
-// أدوات أخرى
-import client from "@/utils/sanityClient";
-import groq from "groq";
 
-// المكوّن الخاص بالمقالات
-import ArticlesSection from "@/components/blogs/ArticlesSection";
-
-// (اختياري) استخدام getStaticProps أو getServerSideProps لجلب المقالات
-// أمثلة على بيانات تجريبية (Mock Data) بدلًا من Fetch حقيقي
-// اجلب المقالات من Sanity
-export async function getStaticProps() {
-  const query = groq`*[_type == "post"] | order(publishedAt desc) [0..2]{
-    _id,
-    title,
-    slug,
-    mainImage,
-    excerpt,
-    publishedAt,
-    language
-  }`;
-
-  const blogs = await client.fetch(query);
-
-  return {
-    props: { blogs },
-    revalidate: 60, // ISR: أعِد بناء الصفحة كل 60 ثانية مثلاً
-  };
-}
-
-const Home = ({ blogs }) => {
+const Home = () => {
   // ضبط الإعدادات الخاصة بالروابط التمريرية
   configureAnchors({ offset: -50, scrollDuration: 100 });
 
@@ -81,10 +53,6 @@ const Home = ({ blogs }) => {
       <LicensesSection />
       <ProjectHomeThree />
 
-      {/* قسم المقالات */}
-      {blogs && blogs.length > 0 && <ArticlesSection blogs={blogs} />}
-
-      {/* الفوتر وعناصر مشتركة أخرى */}
       <Footer />
       <Whatsapp />
     </>

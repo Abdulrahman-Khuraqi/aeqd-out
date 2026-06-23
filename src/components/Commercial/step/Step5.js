@@ -16,10 +16,6 @@ import {
   Label,
 } from "reactstrap";
 
-// Wathq deed verification — temporarily disabled (re-enable when API is ready)
-// const API_KEY = "03pTDFns1QKYULtHvyL9j86KHWracTXK";
-// const API_URL = "https://api.wathq.sa/moj/real-estate/deed/";
-
 const DEED_TYPES_WITH_DOCS = ["صك ملكية ورقي", "حجة استحكام", "أخرى"];
 
 const Step5 = ({
@@ -119,24 +115,6 @@ const Step5 = ({
       deedImage: "",
     }));
   };
-
-  // Wathq deed verification — temporarily disabled (re-enable when API is ready)
-  // const deedStatus = async () => {
-  //   try {
-  //     setData("");
-  //     setSpinnerCheck(true);
-  //     const response = await axios.get(
-  //       `${API_URL}${info.propertyContractId}/${info.lessorIdNumber}/National_ID`,
-  //       { headers: { apikey: API_KEY } },
-  //     );
-  //     setData(response.data);
-  //     toggle();
-  //   } catch (error) {
-  //     setData(error?.response?.data?.message || "حدث خطأ");
-  //     setSpinnerCheck(false);
-  //     toggle();
-  //   }
-  // };
 
   const gotoSix = () => {
     if (isDevMode) {

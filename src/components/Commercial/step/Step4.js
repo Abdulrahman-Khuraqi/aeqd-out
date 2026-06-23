@@ -36,11 +36,7 @@ const Step4 = ({
 
   const handleCommercialImage = (e) => {
     const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "oidj6ike");
-    formData.append("api_key", "437254763994818");
-    setCommerialImage(formData);
+    setCommerialImage(file || "");
   };
 
   const gotoFive = () => {

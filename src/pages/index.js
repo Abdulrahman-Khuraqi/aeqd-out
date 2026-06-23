@@ -17,35 +17,9 @@ import WorkSteps from "@/components/home/WorkSteps";
 import Whatsapp from "@/components/home/Whatsapp";
 import LicensesSection from "@/components/home/LicensesSection";
 
-// المكوّن الجديد لعرض المقالات
-import ArticlesSection from "@/components/blogs/ArticlesSection";
-
-// أدوات أخرى
 import { configureAnchors } from "react-scrollable-anchor";
-import client from "@/utils/sanityClient";
-import groq from "groq";
 
-// اجلب المقالات من Sanity
-export async function getStaticProps() {
-  const query = groq`*[_type == "post"] | order(publishedAt desc) [0..3]{
-    _id,
-    title,
-    slug,
-    mainImage,
-    excerpt,
-    publishedAt,
-    language
-  }`;
-
-  const blogs = await client.fetch(query);
-
-  return {
-    props: { blogs },
-    revalidate: 60, // ISR: أعِد بناء الصفحة كل 60 ثانية مثلاً
-  };
-}
-
-const Home = ({ blogs }) => {
+const Home = () => {
   configureAnchors({ offset: -50, scrollDuration: 100 });
   const { isArabic, handleLanguageChange } = useLanguage(); // Get language state and toggle function
 
@@ -79,9 +53,6 @@ const Home = ({ blogs }) => {
       <Pricing />
       <LicensesSection />
       <ProjectHomeThree />
-
-      {/* قسم المقالات الجديد */}
-      {blogs && blogs.length > 0 && <ArticlesSection blogs={blogs} />}
 
       <Footer />
       <Whatsapp />

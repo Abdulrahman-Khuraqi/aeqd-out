@@ -20,10 +20,6 @@
       "to": "/#Certify",
       "offset": -100,
       "badge": ""
-    },
-    {
-      "title": "مقالات",
-      "to": "/articles"
     }
   ],
   "linksEn": [
@@ -42,10 +38,6 @@
       "to": "#Certify",
       "offset": -100,
       "badge": ""
-    },
-    {
-      "title": "Articles",
-      "to": "/en/articles"
     }
   ]
 }

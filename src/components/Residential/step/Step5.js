@@ -17,17 +17,6 @@ import {
   Row,
 } from "reactstrap";
 
-// Wathq deed verification — temporarily disabled (re-enable when API is ready)
-// const API_KEY = "03pTDFns1QKYULtHvyL9j86KHWracTXK";
-// const API_URL = "https://api.wathq.sa/moj/real-estate/deed/";
-// const Step5 = ({
-//   nextStep,
-//   previousStep,
-//   info,
-//   setInfo,
-//   setContractImage,
-//   contractImage,
-// }) => {
 const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
   const options2 = [
     { value: "عمارة", label: "عمارة" },
@@ -126,29 +115,6 @@ const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
   //   setSpinnerCheck(false);
   // };
 
-  // Wathq deed verification — temporarily disabled (re-enable when API is ready)
-  // const deedStatus = async () => {
-  //   try {
-  //     setData("");
-  //     setSpinnerCheck(true);
-  //     const response = await axios.get(
-  //       `${API_URL}${info.propertyContractId}/${info.lessorIdNumber}/National_ID`,
-  //       {
-  //         headers: {
-  //           apikey: API_KEY,
-  //         },
-  //       },
-  //     );
-  //     const fetchedData = response.data;
-  //     setData(fetchedData);
-  //     toggle();
-  //   } catch (error) {
-  //     toggle();
-  //     setData(error.response.data.message);
-  //     setSpinnerCheck(false);
-  //   }
-  // };
-
   const gotoSix = () => {
     const dateOk = info.propertyContractDate !== "";
     setPropertyContractDateChecked(dateOk);
@@ -191,16 +157,6 @@ const Step5 = ({ nextStep, previousStep, info, setInfo, isDevMode }) => {
       nextStep();
     }
   };
-
-  // const handleContract = async (e) => {
-  //   e.preventDefault();
-  //   const file = e.target.files[0];
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  //   formData.append('upload_preset', 'oidj6ike');
-  //   formData.append('api_key', '437254763994818');
-  //   setContractImage(formData);
-  // };
 
   return (
     <div>
